@@ -1,0 +1,11 @@
+{
+  "name": "react-study",
+  "version": "1.0.0",
+  "description": "react学习",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cjiao100",
+  "license": "ISC"
+}
