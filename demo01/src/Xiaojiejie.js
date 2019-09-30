@@ -2,10 +2,11 @@
  * @Author: cjiao100
  * @Date: 2019-09-30 14:46:16
  * @LastEditors: cjiao100
- * @LastEditTime: 2019-09-30 20:24:38
+ * @LastEditTime: 2019-09-30 20:41:39
  * @Description: Do not edit
  */
 import React, { Component, Fragment } from 'react'
+import XiaojiejieItem from './XiaojiejieItem'
 import './style.css'
 
 class Xiaojiejie extends Component {
@@ -36,12 +37,9 @@ class Xiaojiejie extends Component {
         <ul>
           {this.state.list.map((item, index) => {
             return (
-              <li
-                key={index + item}
-                onClick={this.deleteList.bind(this, index)}
-                // 解析HTML 
-                dangerouslySetInnerHTML={{ __html: item }}
-              />
+              <div key={index + item}>
+                <XiaojiejieItem />
+              </div>
             )
           })}
         </ul>
