@@ -2,7 +2,7 @@
  * @Author: cjiao100
  * @Date: 2019-09-30 14:46:16
  * @LastEditors: cjiao100
- * @LastEditTime: 2019-09-30 20:41:39
+ * @LastEditTime: 2019-10-09 19:03:15
  * @Description: Do not edit
  */
 import React, { Component, Fragment } from 'react'
@@ -38,7 +38,7 @@ class Xiaojiejie extends Component {
           {this.state.list.map((item, index) => {
             return (
               <div key={index + item}>
-                <XiaojiejieItem />
+                <XiaojiejieItem content={item} index={index} deleteItem={this.deleteList.bind(this)} />
               </div>
             )
           })}
