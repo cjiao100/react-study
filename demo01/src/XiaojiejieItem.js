@@ -2,7 +2,7 @@
  * @Author: cjiao100
  * @Date: 2019-09-30 20:32:57
  * @LastEditors: cjiao100
- * @LastEditTime: 2019-10-09 21:15:29
+ * @LastEditTime: 2019-10-09 21:42:08
  * @Description: Do not edit
  */
 import React, { Component } from 'react'
@@ -31,6 +31,10 @@ XiaojiejieItem.propTypes = {
   content: PropTypes.string,
   index: PropTypes.number,
   deleteItem: PropTypes.func
+}
+// 默认值
+XiaojiejieItem.defaultProps = {
+  name: 'yeye'
 }
 
 export default XiaojiejieItem

@@ -2,7 +2,7 @@
  * @Author: cjiao100
  * @Date: 2019-09-30 14:46:16
  * @LastEditors: cjiao100
- * @LastEditTime: 2019-10-09 19:03:15
+ * @LastEditTime: 2019-10-10 12:54:21
  * @Description: Do not edit
  */
 import React, { Component, Fragment } from 'react'
@@ -31,15 +31,25 @@ class Xiaojiejie extends Component {
             type="text"
             value={this.state.inputValue}
             onChange={this.inputChange.bind(this)}
+            ref={input => {
+              this.input = input
+            }}
           />
           <button onClick={this.addList.bind(this)}>增加服务</button>
         </div>
-        <ul>
+        <ul
+          ref={ul => {
+            this.ul = ul
+          }}
+        >
           {this.state.list.map((item, index) => {
             return (
-              <div key={index + item}>
-                <XiaojiejieItem content={item} index={index} deleteItem={this.deleteList.bind(this)} />
-              </div>
+              <XiaojiejieItem
+                key={index + item}
+                content={item}
+                index={index}
+                deleteItem={this.deleteList.bind(this)}
+              />
             )
           })}
         </ul>
@@ -47,18 +57,23 @@ class Xiaojiejie extends Component {
     )
   }
 
-  inputChange(e) {
+  inputChange() {
     // console.log(this)
     // this.state.inputValue = e.target.value
     this.setState({
-      inputValue: e.target.value
+      // inputValue: e.target.value
+      inputValue: this.input.value
     })
   }
 
   addList() {
+    // 渲染DOM是一个异步方法
     this.setState({
       list: [...this.state.list, this.state.inputValue],
       inputValue: ''
+    }, () => {
+      // 在setState执行完毕后执行
+      console.log(this.ul.querySelectorAll('li').length)
     })
   }
 
