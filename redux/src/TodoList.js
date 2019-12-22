@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import TodoListUI from './TodoListUI'
+
 import store from './store'
 // import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './store/actionTypes'
 import { changeInputAction, addItemAction, deleteItemAction } from './store/actionCreators'
 
-import { Input, Button, List } from 'antd'
+// import { Input, Button, List } from 'antd'
 import 'antd/dist/antd.css'
 
 class TodoList extends Component {
@@ -47,41 +49,20 @@ class TodoList extends Component {
     }
 
     deleteTodo(index){
+        console.log(this)
         const action = deleteItemAction(index)
         store.dispatch(action)
     }
 
     render() {
         return (
-            <div style={{
-                margin: '10px'
-            }}>
-                <div>
-                    <Input
-                        placeholder={this.state.inputValue}
-                        value={this.state.inputValue}
-                        style={{
-                            width: '250px',
-                            marginRight: '10px'
-                        }}
-                        onChange={this.changeInputValue.bind(this)}
-                    />
-                    <Button type="primary" onClick={this.clickBtn.bind(this)}>增加</Button>
-                </div>
-                <p>{this.state.inputValue}</p>
-                <div style={{
-                    margin: '10px',
-                    width: '300px'
-                }}>
-                    <List
-                        bordered
-                        dataSource={this.state.data}
-                        renderItem={(item, index) => <List.Item onClick={this.deleteTodo.bind(this, index)}>
-                            {item}
-                        </List.Item>}
-                    ></List>
-                </div>
-            </div>
+            <TodoListUI
+                data={this.state.data}
+                inputValue={this.state.inputValue}
+                changeInputValue={this.changeInputValue.bind(this)}
+                clickBtn={this.clickBtn.bind(this)}
+                deleteTodo={this.deleteTodo.bind(this)}
+            />
         );
     }
 }
