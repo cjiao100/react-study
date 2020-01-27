@@ -4,7 +4,7 @@ import TodoListUI from './TodoListUI'
 
 import store from './store'
 // import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './store/actionTypes'
-import { changeInputAction, addItemAction, deleteItemAction, getTodoList } from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getTodoList, getMyListAction } from './store/actionCreators'
 
 // import { Input, Button, List } from 'antd'
 import 'antd/dist/antd.css'
@@ -52,16 +52,13 @@ class TodoList extends Component {
     }
 
     componentDidMount() {
-        const action = getTodoList()
-        store.dispatch(action)
-        // axios.get('https://easy-mock.com/mock/5e29a55e9ac87461cb753455/study/redux/getList').then(res => {
-        //     const data = res.data.data.list
-        //     const action = getListAction(data)
-        //     store.dispatch(action)
-        // }).catch(err => {
-        //     console.log(err)
-        // })
+        // thunk
+        // const action = getTodoList()
+        // store.dispatch(action)
 
+        // sage
+        const action = getMyListAction()
+        store.dispatch(action)
     }
 
     render() {

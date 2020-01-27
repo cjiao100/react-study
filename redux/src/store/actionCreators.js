@@ -1,4 +1,4 @@
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionTypes'
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST, GET_MY_LIST } from './actionTypes'
 import axios from 'axios'
 
 export const changeInputAction = (value) => ({
@@ -15,6 +15,7 @@ export const getListAction = (data) => ({
     data
 })
 
+// thunk
 export const getTodoList = () => {
     return (dispatch) => {
         axios.get('https://easy-mock.com/mock/5e29a55e9ac87461cb753455/study/redux/getList').then(res => {
@@ -26,3 +27,8 @@ export const getTodoList = () => {
         })
     }
 }
+
+// saga
+export const getMyListAction = () => ({
+    type: GET_MY_LIST
+})

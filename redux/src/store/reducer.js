@@ -6,7 +6,7 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
-    // console.log(state,action)
+    // console.log(action)
     // Reducer 里只能接受state，不能改变state
     if (action.type === CHANGE_INPUT) {
         // 深度拷贝
