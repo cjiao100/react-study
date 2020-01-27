@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
 import TodoListUI from './TodoListUI'
 
 import store from './store'
 // import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './store/actionTypes'
-import { changeInputAction, addItemAction, deleteItemAction } from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getListAction } from './store/actionCreators'
 
 // import { Input, Button, List } from 'antd'
 import 'antd/dist/antd.css'
@@ -15,7 +16,6 @@ class TodoList extends Component {
         super(props)
 
         // 获取reducer中的数据
-        console.log(store.getState())
         let {inputValue, list} = store.getState()
 
         this.state = {
@@ -35,8 +35,6 @@ class TodoList extends Component {
     storeChange() {
         let { inputValue, list } = store.getState()
 
-        // console.log(this)
-
         this.setState({
             inputValue,
             data: list
@@ -52,6 +50,16 @@ class TodoList extends Component {
         console.log(this)
         const action = deleteItemAction(index)
         store.dispatch(action)
+    }
+
+    componentDidMount() {
+        axios.get('https://easy-mock.com/mock/5e29a55e9ac87461cb753455/study/redux/getList').then(res => {
+            const data = res.data.data.list
+            const action = getListAction(data)
+            store.dispatch(action)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
     render() {

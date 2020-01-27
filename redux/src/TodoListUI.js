@@ -25,7 +25,6 @@ const TodoListUI = props => {
                 />
                 <Button type="primary" onClick={props.clickBtn}>增加</Button>
             </div>
-            <p>{props.inputValue}</p>
             <div style={{
                 margin: '10px',
                 width: '300px'
