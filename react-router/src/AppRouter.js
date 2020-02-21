@@ -12,7 +12,7 @@ function AppRouter() {
         <li><Link to='/list'>列表</Link></li>
       </ul>
       <Route path="/" exact component={Index} />
-      <Route path="/list" exact component={List} />
+      <Route path="/list/:id" exact component={List} />
     </Router>
   )
 }
